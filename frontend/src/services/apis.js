@@ -8,5 +8,9 @@ export const endpoints = {
 
 //Course Endpoints
 export const productEndpoints = {
-    ADD_PRODUCT_API: BASE_URL + "/product/add-items"
+    ADD_PRODUCT_API: BASE_URL + "/product/add-items",
+    GET_ALL_PRODUCT_DETAILS_API: BASE_URL + "/product/getProductDetails",
+    DELETE_PRODUCT_API: BASE_URL + "/product/deleteProduct",
+    
+
 }

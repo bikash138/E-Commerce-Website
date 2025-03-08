@@ -6,6 +6,7 @@ const productRoutes = require("./routes/product")
 const cors = require("cors")
 const { cloudinaryConnect } = require("./config/cloudinary")
 const fileUpload = require("express-fileupload")
+const cookieParser = require("cookie-parser")
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(cors({
     credentials: true
 }))
 app.use(express.json())
+app.use(cookieParser())
 
 //To upload files
 app.use(fileUpload({

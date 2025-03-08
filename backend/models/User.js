@@ -12,6 +12,15 @@ const userSchema = new mongoose.Schema(
             required: true,
             trim: true
         },
+        products:[
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Product"
+            }
+        ],
+        token: {
+            type: String
+        },
         email: {
             type:String,
             required: true,

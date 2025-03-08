@@ -6,7 +6,21 @@ import { FiUploadCloud } from 'react-icons/fi'
 const Upload = (
     {label, name, errors, register, setValue}) => {
 
-    const [files, setFiles] = useState([])
+    //const [setSelectedFile, setSelectedFile] = useState(null)
+
+    const onDrop = (acceptedFiles) => {
+        const file = acceptedFiles[0]
+        if(file){
+            previewFile(file)
+            setSelectedFile(file)
+        }
+    }
+
+    const {getRootProps, getInputProps, isDragActive} = useDropzone({
+        accept: {'image/*':['.jpeg', '.png', '.jpg']},
+        maxFiles: 1,
+        onDrop,
+    })
 
     useEffect(()=>{
         register(name, {required: true})
@@ -14,16 +28,9 @@ const Upload = (
 
     useEffect(()=>{
         setValue(name, files)
-    },[files,setValue])
+    },[files, setValue])
 
-    const onDrop = useCallback((acceptedfiles)=>{
-        const mappedFiles = acceptedfiles.map((file)=>(
-            Object.assign(file, {
-                preview: URL.createObjectURL(file),
-            })
-        ))
-        setFiles(mappedFiles)
-    },[])
+    
 
     const thumbs = files.map((file)=>(
         <div key={file.name} className='h-[95%] w-full p-2'>
@@ -36,11 +43,7 @@ const Upload = (
         </div>
     ))
 
-    const {getRootProps, getInputProps, isDragActive} = useDropzone({
-        accept: {'image/*':['.jpeg', '.png', '.jpg']},
-        maxFiles: 1,
-        onDrop,
-    })
+    
 
   return (
     <>

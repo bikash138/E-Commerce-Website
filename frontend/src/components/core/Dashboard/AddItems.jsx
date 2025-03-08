@@ -1,12 +1,13 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import {useSelector} from 'react-redux'
 import { useEffect } from 'react'
 import Upload from './Upload'
 import { addProductDetails } from '../../../services/operations/productDetailsAPI'
 
 
 const AddItems = () => {
-  
+  const {token} = useSelector((state)=>state.auth)
   
   const {
     register,
@@ -16,9 +17,20 @@ const AddItems = () => {
     formState: { errors, isSubmitSuccessful, isSubmitting }
   } = useForm()
 
+ 
+
   const submithandler = async (data) => {
     console.log(data)
-    addProductDetails(data)
+
+    const formData = new FormData()
+    formData.append("productName", data.productName)
+    formData.append("productDescription", data.productDescription)
+    formData.append("productPrice", data.productPrice)
+    formData.append("productCategory", data.productCategory)
+    formData.append("productSubCategory", data.productSubCategory)
+    //formData.append("productThumbnail", data.productThumbnail)
+
+    addProductDetails(formData, token)
   }
 
   useEffect(()=>{
@@ -28,7 +40,8 @@ const AddItems = () => {
         productDescription: "",
         productPrice: "",
         productCategory: "",
-        productSubCategory: ""
+        productSubCategory: "",
+        //productThumbnail: ""
       })
     }
   },[isSubmitSuccessful])
@@ -43,13 +56,13 @@ const AddItems = () => {
         <form onSubmit={handleSubmit(submithandler)}>
           <div>
             <div className='w-[18%] mb-3'>
-              <Upload
+              {/* <Upload
                   name='productThumbnail'
                   label='Upload Thumbnail'
                   register={register}
                   setValue={setValue}
                   errors={errors}
-              />
+              /> */}
               
             </div>
             <label>

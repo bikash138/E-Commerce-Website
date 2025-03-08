@@ -6,10 +6,9 @@ const {
     login
 } = require("../controllers/Auth")
 
-//const {auth} = require("../middleware/auth")
+const {auth} = require("../middleware/auth")
 
 router.post("/signup", signUp)
 router.post("/login", login)
-
 
 module.exports = router;

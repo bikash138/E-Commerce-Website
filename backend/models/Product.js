@@ -7,8 +7,8 @@ const productSchema = new mongoose.Schema({
     },
     seller: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
-        required: true
+        required: true,
+        ref: 'user'
     },
     productDescription: {
         type: String,
@@ -28,7 +28,7 @@ const productSchema = new mongoose.Schema({
     },
     productThumbnail: {
         type: String,
-        required: true
+        required: false
     },
     createdAt: {
         type: Date,
