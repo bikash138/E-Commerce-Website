@@ -43,28 +43,29 @@ const ListItems = () => {
         <h1 className='text-3xl'>Listed Items--</h1>
 
         {/* Products table */}
-        <Table>
+        <Table className='rounded-xl border border-black'>
           <Thead>
-            <Tr>
-              <Th>Image</Th>
-              <Th>Name</Th>
-              <Th>Category</Th>
-              <Th>Price</Th>
-              <Th>Action</Th>
+            <Tr className='flex gap-x-10 rounded-t-md border-b border-black px-6 py-2'>
+              <Th className='flex-1 text-left text-sm font-bold uppercase '>Image</Th>
+              <Th className='flex-1 text-center text-sm font-bold uppercase '>Name</Th>
+              <Th className='flex-1 text-center text-sm font-bold uppercase '>Category</Th>
+              <Th className='flex-1 text-center text-sm font-bold uppercase '>Price</Th>
+              <Th className='flex-1 text-center text-sm font-bold uppercase '>Action</Th>
             </Tr>
           </Thead>
           <Tbody>
             {products?.length === 0 ? (
               <Tr>
-                <Td>No Products Listed</Td>
+                <Td className='py-10 text-center text-2xl font-medium '>No Products Listed</Td>
               </Tr>
             ) : (
               products?.map((product)=>(
-                <Tr key={product._id}>
+                <Tr className='flex justify-between gap-x-10 border-b border-black px-6 py-3'
+                 key={product._id}>
                   <Td>
-                    <p>Image</p>
+                    <img className='w-[60px] h-[60px]' src={product.productThumbnail}/>
                   </Td>
-                  <Td>
+                  <Td className='text-sm font-medium text-black'>
                     <p>{product.productName}</p>
                   </Td>
                   <Td>

@@ -28,7 +28,6 @@ const productSchema = new mongoose.Schema({
     },
     productThumbnail: {
         type: String,
-        required: false
     },
     createdAt: {
         type: Date,

@@ -28,7 +28,7 @@ const AddItems = () => {
     formData.append("productPrice", data.productPrice)
     formData.append("productCategory", data.productCategory)
     formData.append("productSubCategory", data.productSubCategory)
-    //formData.append("productThumbnail", data.productThumbnail)
+    formData.append("productThumbnail", data.productThumbnail)
 
     addProductDetails(formData, token)
   }
@@ -56,13 +56,13 @@ const AddItems = () => {
         <form onSubmit={handleSubmit(submithandler)}>
           <div>
             <div className='w-[18%] mb-3'>
-              {/* <Upload
+              <Upload
                   name='productThumbnail'
                   label='Upload Thumbnail'
                   register={register}
                   setValue={setValue}
                   errors={errors}
-              /> */}
+              />
               
             </div>
             <label>

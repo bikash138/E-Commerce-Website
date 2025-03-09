@@ -1,12 +1,20 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { FiUploadCloud } from 'react-icons/fi'
 
 
 const Upload = (
-    {label, name, errors, register, setValue}) => {
+    {   
+        name,
+        label,  
+        errors, 
+        register, 
+        setValue
+    }) => {
 
-    //const [setSelectedFile, setSelectedFile] = useState(null)
+    const [selectedFile, setSelectedFile] = useState(null)
+    const[previewSource, setPreviewSource] = useState("")
+    const inputRef = useRef(null)
 
     const onDrop = (acceptedFiles) => {
         const file = acceptedFiles[0]
@@ -21,27 +29,22 @@ const Upload = (
         maxFiles: 1,
         onDrop,
     })
+    const previewFile = (file) => {
+        console.log(file)
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = () => {
+            setPreviewSource(reader.result)
+        }
+    }
 
     useEffect(()=>{
         register(name, {required: true})
     },[register])
 
     useEffect(()=>{
-        setValue(name, files)
-    },[files, setValue])
-
-    
-
-    const thumbs = files.map((file)=>(
-        <div key={file.name} className='h-[95%] w-full p-2'>
-            <img
-                src={file.preview}
-                className='object-cover rounded-md'
-                onLoad={()=>URL.revokeObjectURL(file.preview)}
-            />
-            
-        </div>
-    ))
+        setValue(name, selectedFile)
+    },[selectedFile, setValue])
 
     
 
@@ -55,30 +58,37 @@ const Upload = (
             isDragActive ? "bg-slate-500" : "bg-white"
         } min-h-[150px] cursor-pointer items-center justify-center rounded-md border-dashed border-2 border-slate-400 p-1`} 
         >
-            
             {
-                files.length === 0 ? (
-                    <div {...getRootProps()} className='flex w-full items-center p-6'>
-                        <input {...getInputProps()}/>
-                        <div className='grid aspect-square place-items-center rounded-full'>
-                            <FiUploadCloud className='text-8xl'/>
-                        </div>
-                    </div>
-                ) : (
+                previewSource ? (
                     <div>
-                        {thumbs}
-                        <div className='w-full flex justify-between items-center'>
-                            <p
-                                className='bg-red-500 text-white rounded-md m-auto px-2'
-                                type='button'
+                        <img
+                            src={previewSource}
+                            className='mb-1'
+                        />
+                        {
+                            <button
+                                className='bg-red-500 text-white px-3 rounded hover:bg-red-700 transition duration-200 ml-9'
                                 onClick={()=>{
-                                    setFiles([])
+                                    setPreviewSource("")
+                                    setSelectedFile(null)
                                     setValue(name, null)
                                 }}
                             >
                                 Cancel
-                            </p>
+                            </button>
+                        }
+                    </div>
+                    
+                ) : (
+                    <div
+                        className=''
+                        {...getRootProps()}
+                    >
+                        <input {...getInputProps()} ref={inputRef}/>
+                        <div>
+                            <FiUploadCloud className='text-9xl'/>
                         </div>
+                        <p className='items-center ml-5 font-semibold'>Drag and drop'</p>
                     </div>
                 )
             }

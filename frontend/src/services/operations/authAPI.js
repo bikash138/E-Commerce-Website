@@ -76,7 +76,7 @@ export function login(email, password, navigate){
             navigate("/dashboard-profile")
             
             dispatch(setToken(response.data.token))
-            dispatch(setUser({...response.data.user}))
+            dispatch(setUser({ ...response.data.user }))
             
 
             localStorage.setItem("token", JSON.stringify(response.data.token))

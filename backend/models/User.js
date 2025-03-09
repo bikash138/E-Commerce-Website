@@ -18,6 +18,13 @@ const userSchema = new mongoose.Schema(
                 ref: "Product"
             }
         ],
+        profile:[
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                // required :true,
+                ref: "Profile"
+            }
+        ],
         token: {
             type: String
         },
@@ -37,4 +44,4 @@ const userSchema = new mongoose.Schema(
     },
     {timestamps:true}
 )
-module.exports = mongoose.model("user", userSchema)
+module.exports = mongoose.model("User", userSchema)

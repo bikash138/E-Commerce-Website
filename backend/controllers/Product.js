@@ -15,7 +15,7 @@ exports.createProduct = async (req, res) => {
         } = req.body
 
         //Get thumnail image from request body
-        //const thumbnail = req.files.productThumbnail
+        const thumbnail = req.files.productThumbnail
 
         //Check if all required fields are provided
         if(
@@ -23,8 +23,8 @@ exports.createProduct = async (req, res) => {
             !productDescription ||
             !productPrice ||
             !productCategory ||
-            !productSubCategory 
-            //!thumbnail
+            !productSubCategory ||
+            !thumbnail
         ){
             return res.status(400).json({
                 success: false,
@@ -32,11 +32,11 @@ exports.createProduct = async (req, res) => {
             })
         }
         //Upload thumbnail to clodinary
-        // const thumbnailImage = await uploadImageToCloudinary(
-        //     thumbnail,
-        //     process.env.FOLDER_NAME
-        // )
-        //console.log(thumbnailImage)
+        const thumbnailImage = await uploadImageToCloudinary(
+            thumbnail,
+            process.env.FOLDER_NAME
+        )
+        console.log(thumbnailImage)
 
         const sellerDetails = await User.findById(userId)
 
@@ -48,7 +48,7 @@ exports.createProduct = async (req, res) => {
             productPrice,
             productCategory,
             productSubCategory,
-            //productThumbnail: thumbnailImage.secure_url,
+            productThumbnail: thumbnailImage.secure_url,
         })
         
 
@@ -118,8 +118,15 @@ exports.deleteProduct = async(req,res)=>{
                 message:"Product Not Found"
             })
         }
+        //Delete the reference of product in user schema
+        await User.findByIdAndUpdate(
+            product.seller,
+            {
+                $pull: { products: productId }
+            }
+        )
 
-        //Delete th product
+        //Delete the product
         await Product.findByIdAndDelete(productId)
 
         return res.status(200).json({
