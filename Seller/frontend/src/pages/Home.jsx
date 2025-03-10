@@ -1,8 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <div>HOme Page</div>
+    <div>
+      
+
+      <Link to='/dashboard/analytics'>
+            <button>
+              Admin panel
+            </button>
+      </Link>
+    </div>
+    
   )
 }
 

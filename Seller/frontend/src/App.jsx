@@ -15,6 +15,13 @@ import AddItems from './components/core/Dashboard/AddItems'
 import ListItems from './components/core/Dashboard/ListItems'
 import Orders from './components/core/Dashboard/Orders'
 import Profile from './components/core/Dashboard/Profile'
+import Admin from './pages/admin/Admin'
+import { sellerSidebarLinks } from './data/sidebarLinks'
+import AdminDashboard from './components/admin/Dashboard/AdminDashboard'
+import Sellers from './components/admin/Dashboard/Sellers'
+import Customers from './components/admin/Dashboard/Customers'
+import Categories from './components/admin/Dashboard/Categories'
+import Analytics from './components/admin/Dashboard/Analytics'
 
 
 
@@ -49,6 +56,18 @@ return (
             </OpenRoute>
           }
         />
+        <Route
+          element={
+            <OpenRoute>
+              <Admin/>
+            </OpenRoute>
+          }
+        >
+          <Route path='/dashboard/analytics' element={<Analytics/>}/>
+          <Route path='/dashboard/sellers' element={<Sellers/>}/>
+          <Route path='/dashboard/customers' element={<Customers/>}/>
+          <Route path='/dashboard/categories' element={<Categories/>}/>
+        </Route>
 
         {/* Private Route */}
         <Route
@@ -62,6 +81,7 @@ return (
           <Route path='/add-items' element={<AddItems/>}/>
           <Route path='/dashboard-listed-items' element={<ListItems/>}/>
           <Route path='/dashboard-orders' element={<Orders/>}/>
+          
         </Route>
         
       </Routes>

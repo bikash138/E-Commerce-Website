@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { login } from '../services/operations/authAPI';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -88,6 +88,33 @@ const Login = () => {
               </button>
             </div>
           </form>
+          {/* Radio button */}
+          {/* <div>
+            <label className='mr-4'>
+                <input
+                  type='radio'
+                  value='admin'
+                  {...register("role", { required: true })}
+                />
+                Admin
+              </label>
+              <label className='mr-4'>
+                <input
+                  type='radio'
+                  value='customer'
+                  {...register("role", { required: true })}
+                />
+                Customer
+              </label>
+              <label className='mr-4'>
+                <input
+                  type='radio'
+                  value='seller'
+                  {...register("role", { required: true })}
+                />
+                Seller
+              </label>
+          </div> */}
         </div>
       </div>
     </>
