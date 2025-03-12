@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema(
             required: true,
             trim: true
         },
+        role:{
+            type: String,
+            enum: ['Admin', 'Seller', 'Customer']
+        },
         products:[
             {
                 type: mongoose.Schema.Types.ObjectId,

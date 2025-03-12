@@ -9,10 +9,11 @@ const{
 } = require("../controllers/Product")
 
 const {auth} = require ("../middleware/auth")
+const {isSeller} = require("../middleware/auth")
 
 
 //Product Routes
-router.post("/add-items",auth, createProduct)
+router.post("/add-items",auth, isSeller, createProduct)
 router.get("/getProductDetails",auth, getSellerProducts)
 router.delete("/deleteProduct", auth, deleteProduct)
 

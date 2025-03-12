@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
+const User = require("../models/User");
 dotenv.config()
 
 exports.auth = async (req,res, next) => {
@@ -36,6 +37,60 @@ exports.auth = async (req,res, next) => {
         return res.status(401).json({
             success:false,
             message: "Something went wrong while validating Token"
+        })
+    }
+}
+
+exports.isAdmin = async (req,res, next) => {
+    try{
+        const userDetails = await User.findOne({email: req.user.email})
+        if(userDetails.accountType !== 'Admin'){
+            return res.status(401).json({
+                success:false,
+                message: "This is Admin Route"
+            })
+        }
+        next();
+    }catch(error){
+        return res.status(500).json({
+            success:false,
+            message: "User Role can't be Verified"
+        })
+    }
+}
+
+exports.isSeller = async (req,res, next) => {
+    try{
+        const userDetails = await User.findOne({email: req.user.email})
+        if(userDetails.accountType !== 'Seller'){
+            return res.status(401).json({
+                success:false,
+                message: "This is Seller Route"
+            })
+        }
+        next();
+    }catch(error){
+        return res.status(500).json({
+            success:false,
+            message: "User Role can't be Verified"
+        })
+    }
+}
+
+exports.isCustomer = async (req,res, next) => {
+    try{
+        const userDetails = await User.findOne({email: req.user.email})
+        if(userDetails.accountType !== 'Customer'){
+            return res.status(401).json({
+                success:false,
+                message: "This is Customer Route"
+            })
+        }
+        next();
+    }catch(error){
+        return res.status(500).json({
+            success:false,
+            message: "User Role can't be Verified"
         })
     }
 }

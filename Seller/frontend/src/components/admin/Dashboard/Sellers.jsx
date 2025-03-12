@@ -3,6 +3,8 @@ import Card from '../../core/admin/Card'
 import { CiSearch } from 'react-icons/ci'
 import { RiNotification2Line } from 'react-icons/ri'
 import { CgProfile } from "react-icons/cg"
+import { GoPeople } from "react-icons/go";
+
 import { FaPlus } from "react-icons/fa"
 import { TiTick } from "react-icons/ti"
 import {Table, Tbody, Td, Th, Thead, Tr} from "react-super-responsive-table"
@@ -11,7 +13,7 @@ const Sellers = () => {
   return (
     <div>
       {/* Heading */}
-      <div className='flex mb-5 justify-between bg-white px-6 py-2 rounded-xl'>
+        <div className='flex mb-5 justify-between bg-white px-6 py-2 rounded-xl'>
           <div className=''>
             <h1 className='text-3xl'>Sellers</h1>
           </div>
@@ -34,11 +36,11 @@ const Sellers = () => {
             {/* <button><RiAdminLine size={25}/></button> */}
           </div>
           
-        </div>
+        </div>  
 
         {/* Cards */}
         <div className='grid grid-cols-3 gap-x-6 gap-y-7'>
-          <div><Card icon={<CgProfile/>} heading={"Total Sellers"} primaryData={"500"} secondaryData={"24.8%"}/></div>
+          <div><Card icon={<GoPeople/>} heading={"Total Sellers"} primaryData={"500"} secondaryData={"24.8%"}/></div>
           <div><Card icon={<FaPlus/>} heading={"New Sellers"} primaryData={"43"} secondaryData={"9.9%"}/></div>
           <div><Card icon={<TiTick/>} heading={"Top Performers"} primaryData={"76"} secondaryData={"15.3%"}/></div>
           <div className='col-span-3 mb-5 justify-between bg-white px-6 py-2 rounded-xl'>

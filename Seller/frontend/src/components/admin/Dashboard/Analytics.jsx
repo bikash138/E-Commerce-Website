@@ -5,6 +5,10 @@ import { RiNotification2Line } from "react-icons/ri"
 import { RiAdminLine } from "react-icons/ri"
 import LineChart from '../../core/admin/AdminChart'
 import TopAttributes from '../../core/admin/TopAttributes'
+import { RiMoneyRupeeCircleLine } from "react-icons/ri";
+import { GoPeople } from "react-icons/go";
+import { IoIosPeople } from "react-icons/io";
+
 
 const Analytics = () => {
 
@@ -63,9 +67,9 @@ const Analytics = () => {
 
         {/* Cards */}
         <div className='grid grid-cols-3 gap-x-6 gap-y-7'>
-          <div><Card heading={"Total Revenue"} primaryData={"₹78,987"} secondaryData={"24.8%"}/></div>
-          <div><Card heading={"Total Sellers"} primaryData={"240"} secondaryData={"9.9%"}/></div>
-          <div><Card heading={"Total Customers"} primaryData={"4000"} secondaryData={"15.3%"}/></div>
+          <div><Card icon={<RiMoneyRupeeCircleLine/>} heading={"Total Revenue"} primaryData={"₹78,987"} secondaryData={"24.8%"}/></div>
+          <div><Card icon={<GoPeople/>} heading={"Total Sellers"} primaryData={"240"} secondaryData={"9.9%"}/></div>
+          <div><Card icon={<IoIosPeople/>} heading={"Total Customers"} primaryData={"4000"} secondaryData={"15.3%"}/></div>
           {/* Chart */}
           <div className='col-span-2 bg-white rounded-xl p-2'><LineChart /></div>
           <div className='bg-white rounded-xl'><TopAttributes/></div>

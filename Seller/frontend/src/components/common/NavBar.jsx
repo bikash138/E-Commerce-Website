@@ -1,11 +1,14 @@
 import React from 'react'
 
-import logo1 from "../../assets/logo1.jpg"
+import logo1 from "../../assets/logo1.png"
+import logo2 from "../../assets/logo2.png"
+import logo3 from "../../assets/logo3.png"
 import { navBarLinks } from '../../data/navBarLinks'
 import { Link, useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux"
 import ProfileDropwdown from '../core/Auth/ProfileDropwdown'
 import { logout } from '../../services/operations/authAPI'
+import RoleDropdown from './RoleDropdown'
 
 const NavBar = () => {
     
@@ -20,8 +23,8 @@ const NavBar = () => {
         {/* Logo */}
         <Link to='/'>
             <img
-            className='w-72 h-28'
-            src={logo1}
+            className='w-64 h-14'
+            src={logo3}
             />
         </Link>
 
@@ -39,6 +42,9 @@ const NavBar = () => {
                 }
             </ul>
         </nav>
+        {/* User Button */}
+        
+        <RoleDropdown/>
 
         {/* Buttons */}
         <div className='gap-4 flex'>

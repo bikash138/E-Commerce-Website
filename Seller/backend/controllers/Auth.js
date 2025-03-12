@@ -77,11 +77,12 @@ exports.login = async (req,res)=>{
         //get the Data from Request
         const {
             email,
-            password
+            password,
+            
         } = req.body
 
         //Check whether all details are present or not
-        if(!email || !password){
+        if(!email || !password ){
             return res.status(400).json({
                 success:false,
                 message: "All details are not filled"
