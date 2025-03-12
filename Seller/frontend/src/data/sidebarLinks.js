@@ -48,7 +48,7 @@ export const adminSidebarLinks = [
         icon: "VscAccount"
     },
     {
-        id:1,
+        id:4,
         name: "Categories",
         path: "/dashboard/categories",
         icon: "VscAccount"

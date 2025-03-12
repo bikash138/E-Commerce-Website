@@ -1,5 +1,6 @@
 import React from 'react'
-import { assets  } from '../../assets/frontend_assets/assets'
+
+import logo1 from "../../assets/logo1.jpg"
 import { navBarLinks } from '../../data/navBarLinks'
 import { Link, useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux"
@@ -14,12 +15,13 @@ const NavBar = () => {
 
   return (
     <>
-     <div className='flex h-14 items-center justify-center'>
+     <div className='flex h-14 items-center justify-center mt-4'>
      <div className='flex w-11/12 my-5 justify-between items-center'>
         {/* Logo */}
         <Link to='/'>
             <img
-            src={assets.logo}
+            className='w-72 h-28'
+            src={logo1}
             />
         </Link>
 
