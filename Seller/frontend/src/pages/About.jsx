@@ -4,7 +4,7 @@ import Footer from '../components/common/Footer'
 const About = () => {
   return (
     <div>
-        <Footer/>
+        This About Page
     </div>
   )
 }

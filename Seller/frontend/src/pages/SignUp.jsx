@@ -65,7 +65,7 @@ const SignUp = () => {
        <div className='w-[33%] mx-auto mt-6'>
         <div className=''>
          <div className='text-3xl flex justify-center mb-4'>
-            <span>SignIn ---</span>
+            <span>SignUp ---</span>
          </div>
          
          <form 

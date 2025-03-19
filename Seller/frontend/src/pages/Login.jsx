@@ -82,7 +82,7 @@ const Login = () => {
               </label>
           </div>
           {/* Role Section */}
-          <div className='mt-4'>
+          {/* <div className='mt-4'>
             <p className='mb-2'>Role:</p>
             <div className='flex gap-4'>
               <label className='flex items-center'>
@@ -118,7 +118,7 @@ const Login = () => {
                 {errors.role.message}
               </span>
             )}
-          </div>
+          </div> */}
             <div className='flex justify-center'>
               <button
               className='text-white bg-black font-light px-8 py-2 mt-4'

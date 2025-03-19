@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        goldenpink:{
+          500: "#d1c0a6"
+        },
+      }
+    },
   },
   plugins: [],
 }
