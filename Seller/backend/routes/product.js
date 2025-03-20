@@ -13,7 +13,7 @@ const {isSeller} = require("../middleware/auth")
 
 
 //Product Routes
-router.post("/add-items",auth, isSeller, createProduct)
+router.post("/add-items",auth, createProduct)
 router.get("/getProductDetails",auth, getSellerProducts)
 router.delete("/deleteProduct", auth, deleteProduct)
 

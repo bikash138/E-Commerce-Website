@@ -4,25 +4,25 @@ export const sellerSidebarLinks = [
     {
         id:1,
         name: "Profile",
-        path: "/dashboard-profile",
+        path: "/dashboard/profile",
         icon: "VscAccount"
     },
     {
         id:2,
         name: "Add Items",
-        path: "/add-items",
+        path: "/dashboard/add-items",
         icon: "VscDiffAdded"
     },
     {
         id:3,
         name: "Listed Items",
-        path: "/dashboard-listed-items",
+        path: "/dashboard/listed-items",
         icon: "VscListUnordered "
     },
     {
         id:4,
         name: "Orders",
-        path: "/dashboard-orders",
+        path: "/dashboard/orders",
         icon: "VscInbox "
     },
     

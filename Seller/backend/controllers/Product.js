@@ -38,7 +38,7 @@ exports.createProduct = async (req, res) => {
         )
         console.log(thumbnailImage)
 
-        const sellerDetails = await User.findById(userId)
+        const sellerDetails = await Seller.findById(userId)
 
         //Create a new Product Listing with given details
         const newProduct = await Product.create({

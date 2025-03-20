@@ -10,7 +10,7 @@ import ProfileDropwdown from '../core/Auth/ProfileDropwdown'
 import { logout } from '../../services/operations/authAPI'
 import RoleDropdown from './RoleDropdown'
 
-const NavBar = () => {
+const NavBar = ({role}) => {
     
     const {token} = useSelector((state)=>state.auth)
     const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const NavBar = () => {
         <Link to='/'>
             <img
             className='w-64 h-14'
-            src={logo3}
+            src={role === 'Admin' ? logo2 : role === 'Seller' ? logo3 : logo1}
             />
         </Link>
 
@@ -44,25 +44,25 @@ const NavBar = () => {
         </nav>
         {/* User Button */}
         
-        <RoleDropdown/>
+        <RoleDropdown role={role}/>
 
         {/* Buttons */}
         <div className='gap-4 flex'>
             {token == null && (
-                <Link to="/login">
+                <Link to="/customer/login">
                     <button>
                         Login
                     </button>
                 </Link>
             )}
             {token == null && (
-                <Link to="/signup">
+                <Link to="/customer/signup">
                     <button>
                         SignUp
                     </button>
                 </Link>
             )}
-            {token != null && <ProfileDropwdown/>}
+            {token != null && <ProfileDropwdown role={role}/>}
             {token != null && <button onClick={()=>dispatch(logout(navigate))}>Logout</button>}
         </div>
 

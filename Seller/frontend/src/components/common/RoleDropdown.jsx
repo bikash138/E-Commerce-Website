@@ -5,15 +5,15 @@ import { RiAdminLine } from "react-icons/ri"
 import { GoPeople } from "react-icons/go";
 import useOnClickOutside from "../../hooks/useOnClickOutside"
 
-
-export default function RoleDropdown() {
-  
+export default function RoleDropdown({ role }) {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
 
   useOnClickOutside(ref, () => setOpen(false))
 
-  
+  if (role === 'Seller' || role === 'Admin' || role === 'Customer') {
+    return null;
+  }
 
   return (
     <button className="relative" onClick={() => setOpen(true)}>
@@ -27,13 +27,13 @@ export default function RoleDropdown() {
           className="absolute top-[118%] right-0 z-[1000] divide-y-[1px] overflow-hidden rounded-md border-[1px]"
           ref={ref}
         >
-          <Link to="/dashboard/analytics" onClick={() => setOpen(false)}>
+          <Link to="/admin/login" onClick={() => setOpen(false)}>
             <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm ">
               <RiAdminLine className="text-lg" />
               Admin's Panel
             </div>
           </Link>
-          <Link to="/login" onClick={() => setOpen(false)}>
+          <Link to="/seller/login" onClick={() => setOpen(false)}>
             <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm ">
               <GoPeople className="text-lg" />
               Seller's Portal
@@ -41,6 +41,6 @@ export default function RoleDropdown() {
           </Link>
         </div>
       )}
-    </button>
-  )
+    </button>
+  )
 }

@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     seller: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'user'
+        ref: 'User'
     },
     productDescription: {
         type: String,

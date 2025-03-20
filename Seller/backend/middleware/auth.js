@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
 const dotenv = require("dotenv");
+const Seller = require("../models/Seller");
 const User = require("../models/User");
 dotenv.config()
 
@@ -44,7 +45,7 @@ exports.auth = async (req,res, next) => {
 exports.isAdmin = async (req,res, next) => {
     try{
         const userDetails = await User.findOne({email: req.user.email})
-        if(userDetails.accountType !== 'Admin'){
+        if(userDetails.role !== 'Admin'){
             return res.status(401).json({
                 success:false,
                 message: "This is Admin Route"
@@ -62,7 +63,7 @@ exports.isAdmin = async (req,res, next) => {
 exports.isSeller = async (req,res, next) => {
     try{
         const userDetails = await User.findOne({email: req.user.email})
-        if(userDetails.accountType !== 'Seller'){
+        if(userDetails.role !== 'Seller'){
             return res.status(401).json({
                 success:false,
                 message: "This is Seller Route"

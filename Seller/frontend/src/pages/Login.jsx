@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { login } from '../services/operations/authAPI';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({role}) => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const Login = () => {
       <div className='flex w-11/12 items-center mx-auto'>
         <div className='w-[33%] mx-auto mt-6'>
           <div className='text-3xl flex justify-center mb-4'>
-            <span>Login ---</span>
+            <span>{role} Login ---</span>
           </div>
           <form onSubmit={handleSubmit(submithandler)}>
           <label className=''>
@@ -81,6 +81,7 @@ const Login = () => {
                   )}
               </label>
           </div>
+          <input type="hidden" {...register('role')} value={role} />
           {/* Role Section */}
           {/* <div className='mt-4'>
             <p className='mb-2'>Role:</p>
@@ -129,6 +130,13 @@ const Login = () => {
               </button>
             </div>
           </form>
+          {
+            role === 'Seller' ? (
+              <Link to="/seller/signup">Become a Seller</Link>
+            ) : role === 'Admin' ? (
+              <Link to="/admin/signup">Become a Admin</Link>
+            ) : null
+          }
         </div>
       </div>
     </>

@@ -3,18 +3,29 @@ import { CgProfile } from "react-icons/cg";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
+const ProfileDropwdown = ({ role }) => {
+  const getProfileLink = () => {
+    if (role === 'Admin') {
+      return '/dashboard/analytics';
+    } else if (role === 'Seller') {
+      return '/dashboard/profile';
+    } else if (role === 'Customer') {
+      return '/customer/profile';
+    } else {
+      return '/';
+    }
+  };
 
-const ProfileDropwdown = () => {
   return (
-    <Link to="/dashboard-profile">
+    <Link to={getProfileLink()}>
       <button>
         <div className='flex'>
-            <CgProfile/>
-            <AiOutlineCaretDown/>
+          <CgProfile />
+          <AiOutlineCaretDown />
         </div>
-    </button>
+      </button>
     </Link>
-  )
-}
+  );
+};
 
-export default ProfileDropwdown
+export default ProfileDropwdown;

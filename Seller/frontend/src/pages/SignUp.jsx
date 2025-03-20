@@ -7,7 +7,7 @@ import { signUp } from '../services/operations/authAPI'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const SignUp = () => {
+const SignUp = ({role}) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -30,7 +30,8 @@ const SignUp = () => {
             lastName,
             email,
             password,
-            confirmPassword
+            confirmPassword,
+            role
         } = signData;
 
         console.log("Form Data-> " , signData);
@@ -42,6 +43,7 @@ const SignUp = () => {
             email,
             password,
             confirmPassword, 
+            role,
             navigate
         ))
         
@@ -53,7 +55,8 @@ const SignUp = () => {
                 lastName: "",
                 email: "",
                 password: "",
-                confirmPassword: ""
+                confirmPassword: "",
+                role: ""
             })
         }
     },[isSubmitSuccessful])
@@ -65,7 +68,7 @@ const SignUp = () => {
        <div className='w-[33%] mx-auto mt-6'>
         <div className=''>
          <div className='text-3xl flex justify-center mb-4'>
-            <span>SignUp ---</span>
+            <span>{role} SignUp ---</span>
          </div>
          
          <form 
@@ -144,6 +147,7 @@ const SignUp = () => {
                         </span>
                     )}
                 </label>
+                <input type="hidden" {...register('role')} value={role} />
             </div>
             <div className='flex justify-center'>
                 <button
@@ -155,6 +159,7 @@ const SignUp = () => {
                 </button>
             </div>
          </form>
+
         </div>
        </div>
      </div>

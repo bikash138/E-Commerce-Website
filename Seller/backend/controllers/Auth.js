@@ -10,7 +10,8 @@ exports.signUp = async (req,res)=>{
             lastName,
             email,
             password,
-            confirmPassword
+            confirmPassword,
+            role
         } = req.body
         
 
@@ -20,7 +21,8 @@ exports.signUp = async (req,res)=>{
             !lastName ||
             !email ||
             !password ||
-            !confirmPassword
+            !confirmPassword ||
+            !role
         ){
             return res.status(403).json({
                 success:false,
@@ -53,7 +55,8 @@ exports.signUp = async (req,res)=>{
             firstName,
             lastName,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            role
         })
         
         //Return the response
@@ -78,7 +81,7 @@ exports.login = async (req,res)=>{
         const {
             email,
             password,
-            
+            role,
         } = req.body
 
         //Check whether all details are present or not
