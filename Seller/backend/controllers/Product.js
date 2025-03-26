@@ -38,7 +38,7 @@ exports.createProduct = async (req, res) => {
         )
         console.log(thumbnailImage)
 
-        const sellerDetails = await Seller.findById(userId)
+        const sellerDetails = await User.findById(userId)
 
         //Create a new Product Listing with given details
         const newProduct = await Product.create({
@@ -99,7 +99,7 @@ exports.getSellerProducts = async(req,res)=>{
     }catch(error){
         res.status(500).json({
             success:false,
-            message: "Internal Server Error",
+            message: "Internal Server at Error",
             error: error.message
         })
     }
@@ -141,5 +141,25 @@ exports.deleteProduct = async(req,res)=>{
             error: error.message
         })
 
+    }
+}
+
+exports.getAllProducts = async(req,res)=>{
+    try{
+        const allProducts = await Product.find({}).populate({
+            path: "seller",
+            select: "firstName lastName email"
+        }).exec()
+        return res.status(200).json({
+            success: true,
+            data: allProducts
+        })
+            
+    }catch(error){
+        res.status(500).json({
+            success:false,
+            message:"Internal Server Error",
+            error: error.message
+        })
     }
 }

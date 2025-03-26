@@ -23,6 +23,11 @@ import Customers from './components/admin/Dashboard/Customers'
 import Categories from './components/admin/Dashboard/Categories'
 import Analytics from './components/admin/Dashboard/Analytics'
 import { useSelector } from 'react-redux'
+import CustomerDashboard from './pages/customer/CustomerDashboard'
+import Settings from './pages/customer/DashboardPages/Settings'
+import Help from './pages/customer/DashboardPages/Help'
+import Orders1 from './pages/customer/DashboardPages/Orders1'
+import Profile1 from './pages/customer/DashboardPages/Profile1'
 
 
 
@@ -122,6 +127,23 @@ return (
             <Route path='/dashboard/add-items' element={<AddItems/>}/>
             <Route path='/dashboard/listed-items' element={<ListItems/>}/>
             <Route path='/dashboard/orders' element={<Orders/>}/>
+            
+          </Route>
+        )}
+
+        {/* Private Route for Customer */}
+        {user?.role === 'Customer' && (
+          <Route
+            element={
+              <PrivateRoute>
+                <CustomerDashboard/>
+              </PrivateRoute>
+            }
+          >
+            <Route path='customer/profile' element={<Profile1/>}/>
+            <Route path='customer/orders' element={<Orders1/>}/>
+            <Route path='customer/settings' element={<Settings/>}/>
+            <Route path='customer/help' element={<Help/>}/>
             
           </Route>
         )}

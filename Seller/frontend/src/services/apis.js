@@ -6,11 +6,12 @@ export const endpoints = {
     LOGIN_API: BASE_URL + "/auth/login"
 }
 
-//Course Endpoints
+//Product Endpoints
 export const productEndpoints = {
     ADD_PRODUCT_API: BASE_URL + "/product/add-items",
     GET_ALL_PRODUCT_DETAILS_API: BASE_URL + "/product/getProductDetails",
     DELETE_PRODUCT_API: BASE_URL + "/product/deleteProduct",
-    
+    GET_ALL_PRODUCTS: BASE_URL + "/product/getAllProducts",
+     
 
 }

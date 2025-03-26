@@ -1,5 +1,33 @@
 import { assets } from "../assets/admin_assets/assets"
 
+export const adminSidebarLinks = [
+    {
+        id:1,
+        name: "Dashboard",
+        path: "/dashboard/analytics",
+        icon: "VscAccount"
+    },
+    {
+        id:2,
+        name: "Sellers",
+        path: "/dashboard/sellers",
+        icon: "VscDiffAdded"
+    },
+    {
+        id:3,
+        name: "Customers",
+        path: "/dashboard/customers",
+        icon: "VscListUnordered "
+    },
+    {
+        id:4,
+        name: "Categories",
+        path: "/dashboard/categories",
+        icon: "VscInbox "
+    },
+    
+]
+
 export const sellerSidebarLinks = [
     {
         id:1,
@@ -28,32 +56,35 @@ export const sellerSidebarLinks = [
     
 ]
 
-export const adminSidebarLinks = [
+export const customerSidebarLinks = [
     {
         id:1,
         name: "Dashboard",
-        path: "/dashboard/analytics",
+        path: "/customer/profile",
         icon: "VscAccount"
     },
     {
         id:2,
-        name: "Sellers",
-        path: "/dashboard/sellers",
-        icon: "VscAccount"
+        name: "Orders",
+        path: "/customer/orders",
+        icon: "VscDiffAdded"
     },
     {
         id:3,
-        name: "Customers",
-        path: "/dashboard/customers",
-        icon: "VscAccount"
+        name: "Settings",
+        path: "/customer/settings",
+        icon: "VscListUnordered "
     },
     {
         id:4,
-        name: "Categories",
-        path: "/dashboard/categories",
-        icon: "VscAccount"
+        name: "Help",
+        path: "/customer/help",
+        icon: "VscInbox "
     },
+    
 ]
+
+  
 
 
 
