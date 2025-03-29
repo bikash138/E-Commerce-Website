@@ -6,7 +6,8 @@ const{
     createProduct,
     getSellerProducts,
     deleteProduct,
-    getAllProducts
+    getAllProducts,
+    getProduct
 } = require("../controllers/Product")
 
 const {auth} = require ("../middleware/auth")
@@ -18,5 +19,7 @@ router.post("/add-items",auth, createProduct)
 router.get("/getProductDetails",auth, getSellerProducts)
 router.delete("/deleteProduct",auth, deleteProduct)
 router.get("/getAllProducts", getAllProducts)
+router.get("/getProduct/:id", getProduct)
+
 
 module.exports = router;

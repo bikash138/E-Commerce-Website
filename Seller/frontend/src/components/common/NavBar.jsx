@@ -9,6 +9,8 @@ import {useDispatch, useSelector} from "react-redux"
 import ProfileDropwdown from '../core/Auth/ProfileDropwdown'
 import { logout } from '../../services/operations/authAPI'
 import RoleDropdown from './RoleDropdown'
+import { CiShoppingCart } from "react-icons/ci";
+
 
 const NavBar = ({role}) => {
     
@@ -19,54 +21,56 @@ const NavBar = ({role}) => {
   return (
     <>
      <div className='flex h-14 items-center justify-center mt-4'>
-     <div className='flex w-11/12 my-5 justify-between items-center'>
-        {/* Logo */}
-        <Link to='/'>
-            <img
-            className='w-64 h-14'
-            src={role === 'Admin' ? logo2 : role === 'Seller' ? logo3 : logo1}
-            />
-        </Link>
+        <div className='flex w-11/12 my-5 p-3 justify-between items-center border-b border-slate-400'>
+            {/* Logo */}
+            <Link to='/'>
+                <img
+                className='w-64 h-14'
+                src={role === 'Admin' ? logo2 : role === 'Seller' ? logo3 : logo1}
+                />
+            </Link>
 
-        {/* Links */}
-        <nav>
-            <ul className='flex gap-6'>
-                {
-                navBarLinks.map((links, index)=>(
-                    <li key={index}>
-                        <Link to={links.link}>
-                         <p>{links.title}</p>
-                        </Link>
-                    </li>
-                ))
-                }
-            </ul>
-        </nav>
-        {/* User Button */}
-        
-        <RoleDropdown role={role}/>
+            {/* Links */}
+            <nav>
+                <ul className='flex gap-6'>
+                    {
+                    navBarLinks.map((links, index)=>(
+                        <li key={index}>
+                            <Link to={links.link}>
+                            <p>{links.title}</p>
+                            </Link>
+                        </li>
+                    ))
+                    }
+                </ul>
+            </nav>
+            {/* User Button */}
+            
+            <RoleDropdown role={role}/>
 
-        {/* Buttons */}
-        <div className='gap-4 flex'>
-            {token == null && (
-                <Link to="/customer/login">
-                    <button>
-                        Login
-                    </button>
-                </Link>
-            )}
-            {token == null && (
-                <Link to="/customer/signup">
-                    <button>
-                        SignUp
-                    </button>
-                </Link>
-            )}
-            {token != null && <ProfileDropwdown role={role}/>}
-            {token != null && <button onClick={()=>dispatch(logout(navigate))}>Logout</button>}
+            {/* Buttons */}
+            <div className='gap-4 flex'>
+                {token == null && (
+                    <Link to="/customer/login">
+                        <button>
+                            Login
+                        </button>
+                    </Link>
+                )}
+                {token == null && (
+                    <Link to="/customer/signup">
+                        <button>
+                            SignUp
+                        </button>
+                    </Link>
+                )}
+                {token != null && <ProfileDropwdown role={role}/>}
+                {token != null && <button onClick={()=>dispatch(logout(navigate))}>Logout</button>}
+                {token != null && <Link to="/cart"><CiShoppingCart className='text-3xl'/></Link>}
+
+            </div>
+
         </div>
-
-     </div>
      </div>
     </>
   )

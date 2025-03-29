@@ -12,6 +12,7 @@ export const productEndpoints = {
     GET_ALL_PRODUCT_DETAILS_API: BASE_URL + "/product/getProductDetails",
     DELETE_PRODUCT_API: BASE_URL + "/product/deleteProduct",
     GET_ALL_PRODUCTS: BASE_URL + "/product/getAllProducts",
+    GET_PRODUCT: BASE_URL + "/product/getProduct"
      
 
 }

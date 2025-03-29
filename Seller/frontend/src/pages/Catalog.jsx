@@ -58,6 +58,7 @@ const Catalog = () => {
               ) : (
                 products?.map((product)=>(
                   <Link key={product._id} 
+                    to={`/product/${product._id}`}
                     className=''
                   >
                     <ProductCard 

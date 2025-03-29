@@ -28,6 +28,8 @@ import Settings from './pages/customer/DashboardPages/Settings'
 import Help from './pages/customer/DashboardPages/Help'
 import Orders1 from './pages/customer/DashboardPages/Orders1'
 import Profile1 from './pages/customer/DashboardPages/Profile1'
+import ProductDetails from './components/common/ProductDetails'
+import Cart from './pages/customer/Cart'
 
 
 
@@ -42,8 +44,11 @@ return (
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/catalog' element={<Catalog/>}/>
+        {/* <Route path='/about' element={<About/>}/> */}
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/product/:id' element={<ProductDetails/>}/>
         
         {/* Login and SignUp Route For User */}
         

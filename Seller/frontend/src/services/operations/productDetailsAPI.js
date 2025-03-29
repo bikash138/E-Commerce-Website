@@ -7,6 +7,7 @@ const {
     GET_ALL_PRODUCT_DETAILS_API,
     DELETE_PRODUCT_API,
     GET_ALL_PRODUCTS,
+    GET_PRODUCT,
 } = productEndpoints
 
 
@@ -86,6 +87,27 @@ export const fetchAllProducts = async()=>{
         result = response?.data?.data
     }catch(error){
         console.log("Fetch All Products API Error...")
+        toast.error(error.message)
+    }
+    toast.dismiss(toastId)
+    return result
+}
+ 
+export const getProduct = async(productId)=>{
+    const toastId = toast.loading("Loading...")
+    let result = null;
+    try{
+        const response = await apiConnector("GET", `${GET_PRODUCT}/${productId}` )
+        
+        if(!response?.data?.success){
+            throw new Error("Could Not get the Product")
+        }
+        //console.log(response)
+        result = response?.data?.data
+        console.log(result)
+
+    }catch(error){
+        console.log("Get Product API Erorr...")
         toast.error(error.message)
     }
     toast.dismiss(toastId)

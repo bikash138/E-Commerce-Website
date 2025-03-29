@@ -163,3 +163,26 @@ exports.getAllProducts = async(req,res)=>{
         })
     }
 }
+
+exports.getProduct = async(req,res)=>{
+    try{
+        const { id } = req.params
+        // console.log(id)
+        const product = await Product.findById(id)
+        //console.log(product)
+        if(!product){
+            throw new Error("Product Not Found")
+        }
+        res.status(200).json({
+            success:true,
+            data: product
+        })
+        
+    }catch(error){
+        res.status(500).json({
+            success:false,
+            message: "Internal Sever Error",
+            error: error.message
+        })
+    }
+}
