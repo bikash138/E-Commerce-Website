@@ -29,7 +29,8 @@ import Help from './pages/customer/DashboardPages/Help'
 import Orders1 from './pages/customer/DashboardPages/Orders1'
 import Profile1 from './pages/customer/DashboardPages/Profile1'
 import ProductDetails from './components/common/ProductDetails'
-import Cart from './pages/customer/Cart'
+import Cart from './pages/customer/Cart/Cart.jsx'
+
 
 
 

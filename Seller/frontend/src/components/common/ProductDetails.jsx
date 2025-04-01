@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../services/operations/productDetailsAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../redux/slices/cartSlice';
 
 const ProductDetails = () => {
     const { id } = useParams(); // Get the product ID from the URL
     const [product, setProduct] = useState(null); // State to store product details
     const [loading, setLoading] = useState(true); // State to handle loading
+    const dispatch = useDispatch()
+    const {token} = useSelector((state)=>state.auth)
+
+    const handleAddToCart =  () =>{
+        if(token){
+            dispatch(addToCart(product))
+            console.log(product.productName, "Added to Cart")
+            return
+        }
+    }
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -18,7 +30,7 @@ const ProductDetails = () => {
             } catch (error) {
                 console.error("Error fetching product:", error);
             } finally {
-                setLoading(false); // Stop loading after the API call
+                setLoading(false); 
             }
         };
         fetchProduct();
@@ -31,7 +43,6 @@ const ProductDetails = () => {
     if (!product) {
         return <div>Product not found</div>; // Handle case where product is not found
     }
-
     return (
         <>
             <div className='w-11/12 mx-auto mt-10'>
@@ -82,7 +93,9 @@ const ProductDetails = () => {
 
                         {/* Add to Cart Button */}
                         <div className='mt-8'>
-                            <button className='bg-black p-3 px-7 tracking-wider text-white'>
+                            <button 
+                                onClick={handleAddToCart}
+                                className='bg-black p-3 px-7 tracking-wider text-white'>
                                 Add to Cart
                             </button>
                         </div>
