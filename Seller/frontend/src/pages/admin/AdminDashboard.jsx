@@ -1,7 +1,7 @@
 import React from 'react'
-import SideBar from '../../core/Dashboard/SideBar'
+import { adminSidebarLinks } from '../../data/sidebarLinks'
 import { Outlet } from 'react-router-dom'
-import { adminSidebarLinks } from '../../../data/sidebarLinks'
+import SideBar from '../../components/core/Dashboard/SideBar'
 
 const AdminDashboard = () => {
   return (

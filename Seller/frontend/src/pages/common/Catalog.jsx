@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { fetchAllProducts } from '../services/operations/productDetailsAPI'
-import ProductCard from '../components/common/ProductCard'
+import { fetchAllProducts } from '../../services/operations/productDetailsAPI'
+import ProductCard from '../../components/common/ProductCard'
 import { Link } from "react-router-dom"
 
 const Catalog = () => {

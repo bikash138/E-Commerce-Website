@@ -1,9 +1,9 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import SideBar from '../components/core/Dashboard/SideBar'
-import { sellerSidebarLinks } from '../data/sidebarLinks'
+import SideBar from '../../components/core/Dashboard/SideBar'
+import { sellerSidebarLinks } from '../../data/sidebarLinks'
 
-const Dashboard = () => {
+const SellerDashboard = () => {
   return (
     <div className='relative flex min-h-[calc(100vh-3.5rem)]'>
       <SideBar links={sellerSidebarLinks}/>
@@ -16,4 +16,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default SellerDashboard

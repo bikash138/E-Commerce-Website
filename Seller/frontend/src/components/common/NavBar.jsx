@@ -15,6 +15,8 @@ import { CiShoppingCart } from "react-icons/ci";
 const NavBar = ({role}) => {
     
     const {token} = useSelector((state)=>state.auth)
+    const {totalItems} = useSelector((state)=>state.cart)
+    const {user} = useSelector((state)=>state.profile)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -66,7 +68,24 @@ const NavBar = ({role}) => {
                 )}
                 {token != null && <ProfileDropwdown role={role}/>}
                 {token != null && <button onClick={()=>dispatch(logout(navigate))}>Logout</button>}
-                {token != null && <Link to="/cart"><CiShoppingCart className='text-3xl'/></Link>}
+                {/* <Link to="/dashboard/cart" className="relative">
+                    <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
+                    {totalItems > 0 && (
+                    <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                        {totalItems}
+                    </span>
+                )}
+                </Link> */}
+                {user && user?.role === "Customer" && (
+                    <Link to="/cart" className='relative'>
+                        <CiShoppingCart className='text-2xl'/>
+                        {totalItems > 0 && (
+                            <span className="absolute bottom-2 -right-1 grid h-4 w-4 place-items-center overflow-hidden rounded-full bg-black text-center text-xs font-bold text-yellow-100">
+                                {totalItems}
+                            </span>
+                        )}
+                    </Link>
+                )}
 
             </div>
 

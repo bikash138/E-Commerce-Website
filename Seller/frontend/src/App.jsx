@@ -1,54 +1,59 @@
-import React, { useEffect } from 'react'
-import NavBar from './components/common/NavBar'
-import axios from "axios"
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import SignUp from './pages/SignUp'
-import Contact from './pages/Contact'
-import About from './pages/About'
-import Catalog from './pages/Catalog'
-import OpenRoute from "./components/core/Auth/OpenRoute"
-import Dashboard from './pages/Dashboard'
-import PrivateRoute from "./components/core/Auth/PrivateRoute"
-import AddItems from './components/core/Dashboard/AddItems'
-import ListItems from './components/core/Dashboard/ListItems'
-import Orders from './components/core/Dashboard/Orders'
-import Profile from './components/core/Dashboard/Profile'
-import Admin from './pages/admin/Admin'
-import { sellerSidebarLinks } from './data/sidebarLinks'
-import AdminDashboard from './components/admin/Dashboard/AdminDashboard'
-import Sellers from './components/admin/Dashboard/Sellers'
-import Customers from './components/admin/Dashboard/Customers'
-import Categories from './components/admin/Dashboard/Categories'
-import Analytics from './components/admin/Dashboard/Analytics'
 import { useSelector } from 'react-redux'
-import CustomerDashboard from './pages/customer/CustomerDashboard'
-import Settings from './pages/customer/DashboardPages/Settings'
-import Help from './pages/customer/DashboardPages/Help'
-import Orders1 from './pages/customer/DashboardPages/Orders1'
-import Profile1 from './pages/customer/DashboardPages/Profile1'
-import ProductDetails from './components/common/ProductDetails'
-import Cart from './pages/customer/Cart/Cart.jsx'
 
+//Auth Route
+import OpenRoute from "./components/core/Auth/OpenRoute.jsx"
+import PrivateRoute from "./components/core/Auth/PrivateRoute.jsx"
 
+//NavBar
+import NavBar from './components/common/NavBar.jsx'
 
+//Common Routes
+import Home from './pages/common/Home.jsx'
+import Login from './pages/common/Login.jsx'
+import SignUp from './pages/common/SignUp.jsx'
+import Contact from './pages/common/Contact.jsx'
+import About from './pages/common/About.jsx'
+import Catalog from './pages/common/Catalog.jsx'
 
+//Admin Routes
+import AdminDashboard from './pages/admin/AdminDashboard.jsx'
+import Sellers from './components/admin/DashboardPages/Sellers.jsx'
+import Customers from './components/admin/DashboardPages/Customers.jsx'
+import Categories from './components/admin/DashboardPages/Categories.jsx'
+import Analytics from './components/admin/DashboardPages/Analytics.jsx'
+
+// Seller Routes
+import SellerDashboard from './pages/seller/SellerDashboard.jsx'
+import AddItems from './components/seller/DashboardPages/AddItems.jsx'
+import ListItems from './components/seller/DashboardPages/ListItems.jsx'
+import Orders from './components/seller/DashboardPages/Orders.jsx'
+import Profile from './components/seller/DashboardPages/Profile.jsx'
+
+//Customer Routes
+import CustomerDashboard from './pages/customer/CustomerDashboard.jsx'
+import Settings from './components/customer/DashboardPages/Settings.jsx'
+import Help from './components/customer/DashboardPages/Help.jsx'
+import Orders1 from './components/customer/DashboardPages/Orders1.jsx'
+import Profile1 from './components/customer/DashboardPages/Profile1.jsx'
+import ProductDetails from './components/common/ProductDetails.jsx'
+import Cart from './components/customer/Cart/Cart.jsx'
 
 const App = () => {
   const {user} = useSelector((state)=>state.profile)
   
 return (
     <div className="flex min-h-screen w-screen flex-col">
-
-      <NavBar role={user ? user.role : null}/>
+    <NavBar role={user ? user.role : null}/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/catalog' element={<Catalog/>}/>
         {/* <Route path='/about' element={<About/>}/> */}
         <Route path='/about' element={<About/>}/>
-        <Route path='/contact' element={<Contact/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        
         <Route path='/product/:id' element={<ProductDetails/>}/>
         
         {/* Login and SignUp Route For User */}
@@ -108,7 +113,7 @@ return (
           <Route
             element={
               <PrivateRoute>
-                <Admin/>
+                <AdminDashboard/>
               </PrivateRoute>
             }
           >
@@ -125,7 +130,7 @@ return (
           <Route
             element={
               <PrivateRoute>
-                <Dashboard/>
+                <SellerDashboard/>
               </PrivateRoute>
             }
           >
@@ -148,6 +153,7 @@ return (
           >
             <Route path='customer/profile' element={<Profile1/>}/>
             <Route path='customer/orders' element={<Orders1/>}/>
+            
             <Route path='customer/settings' element={<Settings/>}/>
             <Route path='customer/help' element={<Help/>}/>
             

@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import {useSelector} from 'react-redux'
 import { useEffect } from 'react'
-import Upload from './Upload'
+import Upload from '../../core/Dashboard/Upload'
 import { addProductDetails } from '../../../services/operations/productDetailsAPI'
 
 

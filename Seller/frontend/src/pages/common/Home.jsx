@@ -1,12 +1,12 @@
 import React from 'react'
-import { assets } from "../assets/frontend_assets/assets"
+import { assets } from "../../assets/frontend_assets/assets"
 import { Link } from 'react-router-dom'
-import Footer from '../components/common/Footer'
+import Footer from '../../components/common/Footer'
 
 const Home = () => {
   return (
     <>
-      <div className='w-11/12 mx-auto mt-4'>
+      <div className='w-11/12 mx-auto mt-9'>
         {/* Banner Image */}
         <div className='flex justify-between'>
           {/* Hero Text */}

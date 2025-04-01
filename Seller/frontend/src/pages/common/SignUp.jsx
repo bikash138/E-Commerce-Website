@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import {useForm} from "react-hook-form"
 import {toast} from "react-hot-toast"
 import { useDispatch, useSelector } from 'react-redux'
-import { setSignUpData } from '../redux/slices/authSlice'
-import { signUp } from '../services/operations/authAPI'
+import { setSignUpData } from '../../redux/slices/authSlice'
+import { signUp } from '../../services/operations/authAPI'
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = ({role}) => {

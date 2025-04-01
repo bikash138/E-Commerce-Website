@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import RenderCartProduct from './RenderCartProduct'
-import RenderTotalAmount from './RenderTotalAmount'
+import RenderTotalAmount from "./RenderTotalAmount"
 
 const Cart = () => {
 

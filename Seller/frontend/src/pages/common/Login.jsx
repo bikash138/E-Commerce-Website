@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { login } from '../services/operations/authAPI';
+import { login } from '../../services/operations/authAPI';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = ({role}) => {
